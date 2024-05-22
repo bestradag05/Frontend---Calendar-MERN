@@ -108,6 +108,7 @@ const CalendarModal = () => {
 
     if (activeEvent) {
       dispatch(eventStartUpdate(formValues));
+      /* console.log(activeEvent); */
     } else {
       dispatch(eventStartAddNew(formValues));
     }

@@ -30,8 +30,7 @@ const CalendarScreen = () => {
     dispatch(eventStartLoading());
   }, [dispatch]);
 
-  const onDoubleClick = (e) => {
-    console.log(e);
+  const onDoubleClick = () => {
     dispatch(uiOpenModal());
   };
 
@@ -44,11 +43,11 @@ const CalendarScreen = () => {
     localStorage.setItem('lastView', e);
   };
 
-  const onSelectSlot = (e) => {
+  const onSelectSlot = () => {
     dispatch(eventClearActiveEvent());
   };
 
-  const eventStyleGetter = (event, start, end, isSelected) => {
+  const eventStyleGetter = (event) => {
     const style = {
       backgroundColor: uid === event.user._id ? '#367CF7' : '#465660',
       borderRadius: '0px',

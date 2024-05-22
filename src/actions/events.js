@@ -2,7 +2,6 @@ import Swal from 'sweetalert2';
 import { fetchConToken } from '../helpers/fetch';
 import { prepareEvents } from '../helpers/prepareEvents';
 import { types } from '../types/types';
-import moment from 'moment';
 
 export const eventStartAddNew = (event) => {
   return async (dispatch, getState) => {
@@ -16,6 +15,9 @@ export const eventStartAddNew = (event) => {
           _id: uid,
           name
         };
+
+        event.id = body.evento.id;
+
         dispatch(eventAddNew(event));
       }
     } catch (error) {
@@ -85,9 +87,6 @@ export const eventStartLoading = () => {
       const body = await resp.json();
 
       const events = prepareEvents(body.eventos);
-
-      /*       console.log(moment(events[1].end).format('DD/MM/YYYY'));
-      console.log(moment(events[1].start).format('DD/MM/YYYY')); */
 
       dispatch(eventLoaded(events));
     } catch (error) {
